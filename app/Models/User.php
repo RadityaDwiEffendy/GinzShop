@@ -26,6 +26,7 @@ class User extends Authenticatable
         'role_id',
         'username',
         'gambar',
+        'email_verified_at'
     ];
 
     protected $attributes = [

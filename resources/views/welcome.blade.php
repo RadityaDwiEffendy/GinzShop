@@ -2,9 +2,12 @@
 <html lang="en">
 
 <head>
+   
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -12,6 +15,7 @@
         rel="stylesheet">
     <title>Document</title>
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -150,5 +154,20 @@
 </body>
 
 </html>
+<script>
+    document.addEventListener('touchstart', function(e){
+        if (e.touches.length > 1) {
+            e.preventDefault();
+        }
+    }, { passive: false })
 
+    document.addEventListener('wheel', function(e){
+        if (e.ctrlKey || e.metaKey){
+            e.preventDefault()
+        }
+    }, {passive : false})
 
+    window.addEventListener('gesturestart', function(e){
+        e.preventDefault();
+    })
+</script>

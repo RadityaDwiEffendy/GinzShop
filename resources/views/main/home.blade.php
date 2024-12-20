@@ -12,7 +12,7 @@
             <div class="men">
                 <div class="garisP">
                     <button>
-                        <p>0</p>
+                        <p>{{ $stokhabis }}</p>
                         <p>Stok Habis</p>
                     </button>
                 </div>

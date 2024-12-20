@@ -265,7 +265,7 @@
                 style="width: 300px; height: 300px; background: url('/images/market.png'); background-size: cover; background-position: center; margin-left: 30px;">
             </div>
             {{-- background: linear-gradient(to top #101630, #fff)  --}}
-            <div class="login-form">
+            {{-- <div class="login-form"> 
                 <div>
                     <div class="judul">
                         <h2><span>Ginzo</span> Shop</h2>

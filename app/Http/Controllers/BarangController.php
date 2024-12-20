@@ -60,7 +60,7 @@ class BarangController extends Controller
     
         try {
             Barang::create($data);
-            return redirect()->route('main.datamaster')->with('success', 'Barang berhasil ditambahkan!');
+            return redirect()->route('main.datamaster')->with('success', 'Transaksi Berhasil!');
         } catch (\Exception $e) {
             Log::error('Error occurred while adding item: ' . $e->getMessage());
             return redirect()->back()->withErrors(['error' => 'Terjadi kesalahan. Silakan coba lagi nanti.']);
@@ -68,6 +68,18 @@ class BarangController extends Controller
     }
     
 
+    public function hapusBarangStore($id)
+    {
+    
+        $barang = Barang::findOrFail($id);
+        
+  
+        $barang->delete();
+    
+        
+        return redirect()->route('main.datamaster')->with('success', 'Barang berhasil dihapus');
+    }
+    
     
 
     public function editbarang($id)
@@ -118,18 +130,28 @@ class BarangController extends Controller
         $barangQuantities = $request->input('barang_quantity');
         $barangPrices = $request->input('barang_price');
         $barangTotals = $request->input('barang_total');
-
+    
         $total = $request->input('total');
         $uang = $request->input('uang');
         $kembali = $request->input('kembali');
-
-
-        if(count($barangNames) !== count($barangPrices) || count($barangNames) !== count($barangQuantities)){
-            return response()->json(['success', false, 'message' => 'Data Tidak Konsisten']);
+    
+        if (count($barangNames) !== count($barangPrices) || count($barangNames) !== count($barangQuantities)) {
+            return response()->json(['success' => false, 'message' => 'Data Tidak Konsisten']);
         }
+    
 
+        for($i = 0; $i < count($barangNames); $i++){
+            $barang = Barang::where('nama_barang', $barangNames[$i])->first();
+    
+            if ($barang) {
+                if ($barang->stok < $barangQuantities[$i]) {
+                 
+                    session()->flash('error', "Stok {$barang->nama_barang} tidak mencukupi. Stok tersedia {$barang->stok}");
+                    return redirect()->route('main.transaksi');
+                }
+            }
+    
 
-        for($i = 0; $i <count($barangNames); $i++){
             History::create([
                 'barang_name' => $barangNames[$i],
                 'barang_quantity' => $barangQuantities[$i],
@@ -137,22 +159,22 @@ class BarangController extends Controller
                 'barang_total' => $barangTotals[$i],
             ]);
 
-            $barang = Barang::where('nama_barang', $barangNames[$i])->first();
-            if($barang){
+            if ($barang) {
                 $barang->stok -= $barangQuantities[$i];
                 $barang->save();
             }
         }
+    
 
         Transaksi::create([
             'total' => $total,
             'uang' => $uang,
             'kembali' => $kembali
         ]);
-
-        return redirect()->route('main.transaksi')->with('success', 'Data Berhasil Di Tambah');
-
-        
+    
+        return redirect()->route('main.transaksi')->with('success', 'Data Berhasil Ditambahkan');
     }
+    
+    
 
 }

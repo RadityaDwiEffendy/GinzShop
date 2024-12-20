@@ -5,8 +5,11 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\staffGudangController;
+use App\Http\Controllers\TugasController;
+use App\Http\Controllers\userController;
 use App\Http\Controllers\VerificationController;
 use App\Mail\VerificationMail;
+use App\Models\Tugas;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -46,12 +49,35 @@ Route::middleware('auth')->group(function () {
     Route::post('/transaksi/simpan', [BarangController::class, 'simpan']);
     Route::get('/history', [HistoryController::class, 'history'])->name('main.history');
 
+    Route::delete('/data-master/edit/{barang}', [BarangController::class, 'hapusBarangStore'])->name('barang.hapusBarangStore');
+
     Route::get('/akun-management', [AuthController::class, 'managementAkun'])->name('main.akun-manager');
     Route::put('/akun-management/simpan/{user}', [RegisterController::class, 'update'])->name('user.update');
     Route::delete('/akun-management/Delete/{user}', [RegisterController::class, 'Delete'])->name('user.delete');
     Route::put('/profile/simpan/{id}', [RegisterController::class, 'updateProfile'])->name('user.updateProfile');
     Route::put('/profile/password/{id}', [RegisterController::class, 'updatePassword'])->name('user.updatePassword');
 
+
+    Route::post('/profile/verify-password', [AuthController::class, 'verifyPassword'])->name('main.profile.verify');
+    
+    Route::post('/akun-management/create', [RegisterController::class, 'createUser'])->name('main.createUser');
+    
+    
+    
+    
+    Route::get('/tugas', [AuthController::class, 'tugas'])->name('main.tugas');
+    Route::Post('/tugas/post', [TugasController::class, 'tugasPost'])->name('main.tugasPost');
+    Route::Post('/tugas/pick/{id}', [TugasController::class, 'tugasPicker'])->name('main.tugasPicker');
+    Route::delete('/tugas/delete/{id}', [TugasController::class, 'hapusTugas'])->name('tugas.delete');
+
+
+    
+    
+    
+    
+    
+    
+    Route::get('/home-user', [userController::class, 'user'])->name('user.main');
 });
 
 

@@ -38,7 +38,7 @@
     .for {
         border-radius: 5px;
         width: 65%;
-        height: 350px;
+        height: 450px;
         background-color: white;
         display: flex;
         align-items: center;

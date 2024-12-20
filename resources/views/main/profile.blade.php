@@ -38,41 +38,45 @@
 
                 <div class="ktkp">
                     <div class="ktkprof1">
-                        <div>
-                            <div class="kelola">
-                                <div>
-                                    <label for="">Username</label>
+                       
+                            <div>
+                                <div class="kelola">
+                                    <div>
+                                        <label for="">Username</label>
+                                    </div>
+                                    <div class="">
+                                        <input type="text" name="username" value="{{ $user->username }}">
+                                    </div>
                                 </div>
-                                <div class="">
-                                    <input type="text" name="username" value="{{ $user->username }}">
+                                <div class="kelola">
+                                    <div>
+                                        <label for="">Nama</label>
+                                    </div>
+                                    <div class="">
+                                        <input type="text" name="name" value="{{ $user->name }}">
+                                    </div>
+                                </div>
+                                <div class="kelola">
+                                    <div>
+                                        <label for="">Email</label>
+                                    </div>
+                                    <div class="">
+                                        <input type="text" name="email" value="{{ $user->email }}">
+                                    </div>
+                                </div>
+
+
+                                <div class="kelola">
+                                    <div>
+                                        <label for="">Role</label>
+                                    </div>
+                                    <div class="">
+                                        <input style="background-color: white" disabled type="text" placeholder=""
+                                            value=" @if ($user->role_id == 1) Admin @elseif ($user->role_id == 2) Petugas Barang @elseif($user->role_id == 3) Petugas Kasir @elseif($user->role_id == 4) User @endif">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="kelola">
-                                <div>
-                                    <label for="">Nama</label>
-                                </div>
-                                <div class="">
-                                    <input type="text" name="name" value="{{ $user->name }}">
-                                </div>
-                            </div>
-                            <div class="kelola">
-                                <div>
-                                    <label for="">Email</label>
-                                </div>
-                                <div class="">
-                                    <input type="text" name="email" value="{{ $user->email }}">
-                                </div>
-                            </div>
-                            <div class="kelola">
-                                <div>
-                                    <label for="">Role</label>
-                                </div>
-                                <div class="">
-                                    <input style="background-color: white" disabled type="text" placeholder=""
-                                        value=" @if ($user->role_id == 1) Admin @elseif ($user->role_id == 2) Petugas Barang @elseif($user->role_id == 3) Petugas Kasir @elseif($user->role_id == 4) User @endif">
-                                </div>
-                            </div>
-                        </div>
+                    
                     </div>
 
                 </div>
@@ -86,37 +90,30 @@
             <div>
                 <p>Ganti Password</p>
             </div>
-            <form action="{{ route('user.updatePassword', $user->id) }}" method="POST">
+            <form id="update-password-form" action="{{ route('user.updatePassword', ['id' => $user->id]) }}" method="POST">
                 @csrf
                 @method('put')
 
                 <div class="ktkp">
                     <div class="ktkprof2">
                         <div>
-                            <div class="kelola1">
-                                <div>
-                                    <label for="">Password Lama</label>
-                                </div>
-                                <div class="">
-                                    <input type="text" name="name" value="{{ $user->password }}">
-                                </div>
-                            </div>
+
                             <div class="kelola1">
                                 <div>
                                     <label for="">Password Baru</label>
                                 </div>
                                 <div class="">
-                                    <input type="text" name="password" >
+                                    <input type="text" name="password">
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
 
                 </div>
 
                 <div class="gambar-up">
-                    <button>Simpan</button>
+                    <button type="submit" id="save-button">Simpan</button>
                 </div>
             </form>
         </div>

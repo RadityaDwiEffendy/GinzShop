@@ -1,5 +1,26 @@
 @extends('main.sidebar')
 @section('main-container')
+    @if (session('error'))
+        <div class="alert alert-danger"
+            style="position: absolute; display: flex;justify-content: center; width: 100%; height: 100vh; top: 0; left: 0;">
+            <div
+                style="display: flex;align-items: center;margin-top: 5rem;width: 30rem;margin-left: 40rem ;height: 38px; background-color: #c42232; box-shadow: 0 0 4px 2px rgba(0,0,0,0.2)">
+                <p style="margin-left: 10px;color: white; font-size: 14px">{{ session('error') }}</p>
+            </div>
+        </div>
+    @endif
+
+
+    @if (session('success'))
+        <div class="alert alert-success"
+            style="position: absolute; display: flex;justify-content: center; width: 100%; height: 100vh; top: 0; left: 0;">
+            <div
+                style="display: flex;align-items: center;margin-top: 5rem;width: 30rem;margin-left: 40rem ;height: 38px; background-color: #03ce32; box-shadow: 0 0 4px 2px rgba(0,0,0,0.2)">
+                <p style="margin-left: 10px;color: white; font-size: 14px"> {{ session('success') }}</p>
+            </div>
+        </div>
+    @endif
+
     <div class="bar">
         <button disabled style="cursor: default">Transaksi</button>
         <div style="margin-left: 10%">
@@ -9,16 +30,21 @@
 
     <div style="display: none" id="showList">
         <div
-            style="position: absolute; width: 30%; min-height: 50vh; background-color: white; margin-left: 10%; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2)">
+            style="position: absolute; width: 30%; min-height: 10vh; padding-bottom: 15px;border-radius: 5px; background-color: white; margin-left: 10%; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2)">
+            <div style="display: flex; margin-top: 10px; width: 90%;">
+                <div style="width: 100%; display: flex; justify-content: center">
+                    <p class="righteous-regular">list of items</p>
+                </div>
+
+            </div>
             @foreach ($barank as $brg)
                 <div>
-                    <div
-                        style="display: flex; margin-left: 20px; margin-top: 10px; border: 1px solid rgb(149, 149, 149); width: 90%; height: 25px; border-radius: 5px">
-                        <div style="width: 100px; margin-left: 10px">
-                            {{ $brg->kode_barang }}
+                    <div style="display: flex; margin-left: calc(50% - 40%); font-size: 14px; margin-top: 10px">
+                        <div style="width: 70%">
+                            <p>{{ $brg->nama_barang }}</p>
                         </div>
-                        <div>
-                            {{ $brg->nama_barang }}
+                        <div style="width: 100px; margin-left: 100px">
+                            <p>{{ $brg->kode_barang }}</p>
                         </div>
                     </div>
                 </div>
@@ -377,11 +403,9 @@
 
                 document.addEventListener('click', function(event) {
                     if (event.target.classList.contains('add-barang')) {
-
-                        // const barangId = event.target.getAttribute('data-id');
                         const barangName = event.target.getAttribute('data-nama');
                         const hargaBarang = parseFloat(event.target.getAttribute('data-harga'));
-
+                        const stokBarang = parseInt(event.target.getAttribute('data-stok'))
                         const existingRows = tableBody.querySelectorAll('tr')
                         let alreadyAdded = false
 
@@ -613,6 +637,25 @@
                         }
                     })
                     .catch(error => console.error('Error', error))
+            })
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var errorAlert = document.querySelector('.alert-danger');
+                var successAlert = document.querySelector('.alert-success');
+
+                if (errorAlert) {
+                    setTimeout(function() {
+                        window.location.reload();
+                    }, 3000);
+                }
+
+                if (successAlert){
+                    setTimeout(function() {
+                        window.location.reload()
+                    }, 3000);
+                }
             })
         </script>
     @endsection

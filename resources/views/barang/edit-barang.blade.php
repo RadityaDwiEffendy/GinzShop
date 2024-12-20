@@ -11,10 +11,7 @@
                     @csrf
                     @method('PUT')
                     <div class="upload">
-                        <label for="gambar">Upload Gambar:</label>
-                        <input type="file" name="gambar" id="gambar">
-                        <img id="preview" src="{{ $barang->gambar ? Storage::url('images/' . $barang->gambar) : '' }}"
-                            alt="Preview Gambar" style="{{ $barang->gambar ? 'display: block;' : 'display: none;' }}">
+                        
 
                         <div class="bks">
                             <div>
