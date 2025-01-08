@@ -29,154 +29,194 @@
 
 </head>
 
-<body>
-    <div class="container">
-        <div class="sidebar">
+<body style="background-color: #F9FAFC">
 
-            <div class="side-link">
-                <div class="menu">
+    <div style="display: flex;">
 
-                    <div class="kategory1">
-                        <div class="kat">
-                            <div class="logo"></div>
-                            <p>Produk</p>
-                        </div>
-                        <div>
-                            <a href="{{ route('main.home') }}">Dashboard</a>
-                        </div>
-                        @if (Auth::user()->role_id != 3)
-                            <div>
-                                <a href="{{ route('main.datamaster') }}">Data Master</a>
-                            </div>
-                        @endif
-                        @if (Auth::user()->role_id != 2)
-                            <div>
-                                <a href="{{ route('main.transaksi') }}">Transaksi</a>
-                            </div>
-                        @endif
+        <div style="width: 220px; height: 100vh;border-right: 2px solid #F4F4F6; background-color: white; ">
+            <div
+                style="display: flex; width: 100%; height: 60px; border-bottom: 2px solid #F4F4F6; align-items: center">
+                {{-- Profile --}}
+                <div
+                    style="width: 40px; height: 40px; border-radius: 50%; margin-left: 20px; background-color: #1C2630; display: flex; justify-content: center; align-items: center;">
+                    <p
+                        style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color:white">
+                        G</p>
+                </div>
+
+                <div style="width: 150px;margin-left: 10px; height: 40px; display: flex; flex-direction: column">
+                    <div style="width: 100%; flex: 1">
+                        <p style="font-size: 14px; font-weight: bold;color: #1F2938">GinShop</p>
                     </div>
-
-                    <div class="kategory">
-                        <div class="kat">
-                            <div class="logo1"></div>
-                            <p>Keuangan</p>
-                        </div>
-
-                        <div>
-                            <a href="{{ route('main.history') }}">History</a>
-                        </div>
-                    </div>
-                    <div class="kategory2">
-                        <div class="kat">
-                            <div class="logo2"></div>
-                            <p>Account Manager</p>
-                        </div>
-                        <div>
-                            <a href="#" id="profile-link">Akun Saya</a>
-                        </div>
-                        @if (Auth::user()->role_id != 2 && Auth::user()->role_id != 3)
-                            <div>
-                                <a href="#" id="manage-account">Manajemen Akun</a>
-                            </div>
-                        @endif
-                        <div>
-                            <a href="{{ route('main.tugas') }}">Tugas</a>
-                        </div>
+                    <div style="width: 100%; flex: 1">
+                        <p style="font-size: 12px; color: #A8ABAD">
+                            Cashier Daily Assisten
+                            {{-- @if ($user->role_id == 1)
+                                Admin
+                            @elseif ($user->role_id == 2)
+                                Petugas Barang
+                            @elseif($user->role_id == 3)
+                                Petugas Kasir
+                            @endif --}}
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="navbar">
-            <h2>GinShop</h2>
-            <p>Seller Center</p>
-            <div class="nav-link">
+            <div style="border-bottom: 2px solid #F4F4F6">
 
-                <div class="profile">
+                <div
+                    style="margin-top: 5px;width: 100%; height: 40px; display: flex; justify-content: center; align-items: center;">
+                    <a style="width: 90%;text-decoration: none" href="{{ route('main.home') }}">
+                        <button
+                            style="width: 90%; height: 35px; border-radius: 7px; display: flex; align-items: center; border: none; background-color: {{ request()->is('dashboard') ? '#1F2938' : 'white' }}; cursor: pointer;">
+                            <img style="border-radius: 2px;padding: 1px;background-color: white;margin-left: 10px; width: 15px; height: 15px"
+                                src="{{ request()->is('dashboard') ? asset('images/picked.png') : asset('images/nopick.png') }}">
+                            <p
+                                style="margin-left: 10px; font-size: 14px; font-weight: bold; color: {{ request()->is('dashboard') ? 'white' : '#1F2938' }}">
+                                Dashboard</p>
+                        </button>
+                    </a>
+                </div>
 
-                    <button onclick="DropDown()">
-                        <div class="info">
-                            @if ($user->gambar)
-                                <img src="{{ asset('storage/' . $user->gambar) }}" alt="User Image">
-                            @else
-                                <img src="{{ asset('images/userno.png') }}" alt="Default User Image">
-                            @endif
-                        </div>
-                        <div class="nama">
-                            <p>{{ Auth::User()->name }}</p>
-                        </div>
-                    </button>
-
-                    <div class="drop" id="Down">
-                        <div class="in">
-                            <div class="profny">
-                                @if ($user->gambar)
-                                    <img src="{{ asset('storage/' . $user->gambar) }}" alt="User Image">
-                                @else
-                                    <img src="{{ asset('images/userno.png') }}" alt="Default User Image">
-                                @endif
-                            </div>
-
-
-                        </div>
-                        <div class="i1n">
-                            <p>{{ Auth::User()->name }}</p>
-                        </div>
-
-                        <div class="i2n">
-                            <div class="garis"></div>
-
-                        </div>
-
-                        <div class="more-info">
-                            <div class="img">
-                            </div>
-                            <p><a href="{{ route('main.profile') }}">Profile</a></p>
-                        </div>
-                        <div class="more-info">
-                            <div class="img1">
-                            </div>
-                            <p>Bahasa Indonesia (indonesia)</p>
-                        </div>
-
-                        <div class="i2n">
-                            <div class="garis"></div>
-
-                        </div>
-                        <div class="more-info1">
-                            <div class="img2">
-
-                            </div>
-                            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button type="submit">logout</button>
-                            </form>
-                        </div>
-
-                    </div>
-
+                <div style="width: 100%; height: 40px; display: flex; justify-content: center; align-items: center;">
+                    <a style="width: 90%;text-decoration: none" href="{{ route('main.datamaster') }}">
+                        <button
+                            style="width: 90%; height: 35px; border-radius: 7px; display: flex; align-items: center; border: none; background-color: {{ request()->is('data-master') ? '#1F2938' : 'white' }}; cursor: pointer;">
+                            <img style="margin-left: 10px; width: 15px; height: 15px"
+                                src="{{ request()->is('data-master') ? asset('images/productP.png') : asset('images/product.png') }}">
+                            <p
+                                style="margin-left: 10px; font-size: 14px; font-weight: bold; color: {{ request()->is('data-master') ? 'white' : '#1F2938' }}">
+                                Items Menu</p>
+                        </button>
+                    </a>
+                </div>
+                <div style="width: 100%; height: 40px; display: flex; justify-content: center; align-items: center;">
+                    <a style="width: 90%; text-decoration: none" href="{{ route('main.transaksi') }}">
+                        <button
+                            style="width: 90%; height: 35px; border-radius: 7px; display: flex; align-items: center; border: none; background-color: {{ request()->is('transaksi') ? '#1F2938' : 'white' }}; cursor: pointer;">
+                            <img style="margin-left: 10px; width: 15px; height: 15px"
+                                src="{{ request()->is('transaksi') ? asset('images/clipboardP.png') : asset('images/clipboard.png') }}">
+                            <p
+                                style="margin-left: 10px; font-size: 14px; font-weight: bold; color: {{ request()->is('transaksi') ? 'white' : '#1F2938' }}">
+                                Transaction</p>
+                        </button>
+                    </a>
                 </div>
             </div>
+
+            {{--  --}}
+            <div style="">
+
+                <div
+                    style="margin-top: 5px;width: 100%; height: 40px; display: flex; justify-content: center; align-items: center;">
+                    <a style="width: 90%;text-decoration: none" href="{{ route('main.home') }}">
+                        <button
+                            style="width: 90%; height: 35px; border-radius: 7px; display: flex; align-items: center; border: none; background-color: {{ request()->is('') ? '#1F2938' : 'white' }}; cursor: pointer;">
+                            <img style="border-radius: 2px;padding: 1px;background-color: white;margin-left: 10px; width: 15px; height: 15px"
+                                src="{{ request()->is('') ? asset('images/user.png') : asset('images/user.png') }}">
+                            <p style="margin-left: 10px; font-size: 14px; font-weight: bold; color: {{ request()->is('') ? 'white' : '#1F2938' }}">User Box </p>
+                            <div style="width: 15px; height: 15px;background-color:aqua ;background-size: ;background-image: url({{ asset('images/down-arrow.png') }});"></div> 
+                        </button>
+                    </a>
+                </div>
+
+                
+            </div>
+            {{--  --}}
         </div>
+
+        <div style="width: 100%; height: 60px; border-bottom: 2px solid #F4F4F6; background-color: #F9FAFC;display:flex;align-items:center">
+            <div
+                style="margin-left: 20px;min-width: 140px; height: 30px; background-color: white; border: 1px solid #eaeaea; border-radius: 10px; display: flex; align-items: center">
+                <div
+                    style="border: 1px solid #dcdcdc;margin-left: 10px; width: 21px; height: 21px; background: #1C2630; border-radius: 50%; background-image: url('{{ Storage::url($user->gambar) }}'); background-position: center; background-size: cover;">
+
+                </div>
+                <div style="margin-left: 10px">
+                    <p style="font-size: 13px; font-weight: 500;">{{ Auth::user()->name }}</p>
+                </div>
+            </div>
+            <div
+                style="margin-left: 42%;width: 240px; height: 30px; background-color: white;border: 1px solid #eaeaea; border-radius: 10px; display: flex; align-items: center">
+                <div
+                    style="margin-left: 10px; width: 15px; height: 15px; background-image: url('{{ asset('images/calendar.png') }}'); background-position: center; background-size: cover;">
+                </div>
+                <div>
+                    <p style="font-size: 13px; margin-left: 10px; font-weight: 500" id="Bulan"></p>
+                </div>
+            </div>
+            <button style="margin-left: 10px; background: none; border: none; cursor: pointer;">
+                <div
+                    style=";width: 30px; height: 30px; background-color: white;border: 1px solid #eaeaea; border-radius: 10px; display: flex; align-items: center; justify-content: center">
+                    <div
+                        style=" width: 15px; height: 15px; background-image: url('{{ asset('images/calendar.png') }}'); background-position: center; background-size: cover;">
+                    </div>
+                </div>
+            </button>
+            <button style="margin-left: 10px; background: none; border:none; cursor: pointer;">
+                <div
+                    style=";width: 120px; height: 30px; background-color: white;border: 1px solid #eaeaea; border-radius: 10px; display: flex; align-items: center;">
+                    <div
+                        style="margin-left: 10px;border: 1px solid #dcdcdc;border-radius: 10px; width: 17px; height: 17px; background-image: url('{{ Storage::url($user->gambar) }}'); background-position: center; background-size: cover;">
+                    </div>
+                    <div>
+                        <p style="margin-left: 10px; font-size:13px;">{{ Auth::user()->username }}</p>
+                    </div>
+                </div>
+            </button>
+        </div>
+
+
+    </div>
+
+
+
+
+    {{-- <div class="container">
 
         <div class="body">
             <div class="main-body">
                 @yield('main-container')
             </div>
         </div>
-    </div>
+    </div> --}}
 </body>
 
 </html>
+<script>
+    const d = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    const m = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Dec']
+
+    const n = new Date()
+    const dk = d[n.getDay()]
+    const h = n.getDate()
+    const b = m[n.getMonth()]
+    const y = n.getFullYear()
+
+    const i = n.getMinutes() < 10 ? '0' + n.getMinutes() : n.getMinutes()
+    const j = n.getHours() < 10 ? '0' + n.getHours() : n.getHours()
+
+
+    document.getElementById('Bulan').textContent = `${dk}, ${h} ${b} ${y} at ${j}:${i} `
+
+    setInterval(() => {
+        const n = new Date()
+        const i = n.getMinutes() < 10 ? '0' + n.getMinutes() : n.getMinutes()
+        const j = n.getHours() < 10 ? '0' + n.getHours() : n.getHours()
+
+        document.getElementById('Bulan').textContent = `${dk}, ${h} ${b} ${y} at ${j}:${i} `
+    }, 1000);
+</script>
 
 <script src="{{ asset('js/script.js') }}"></script>
 <script src="https://unpkg.com/@zxing/library@latest"></script>
 
 <script>
-    document.getElementById('profile-link').addEventListener('click', function (e) {
+    document.getElementById('profile-link').addEventListener('click', function(e) {
         e.preventDefault();
 
-   
+
         Swal.fire({
             title: 'Masukkan Password Anda',
             input: 'password',
@@ -197,41 +237,43 @@
             }
         }).then((result) => {
             if (result.isConfirmed) {
-                
-                fetch('{{ route("main.profile.verify") }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                    },
-                    body: JSON.stringify({ password: result.value }),
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'success') {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Berhasil!',
-                            text: 'Anda akan diarahkan ke halaman profile.',
-                        }).then(() => {
-                            window.location.href = '{{ route("main.profile") }}';
-                        });
-                    } else {
+
+                fetch('{{ route('main.profile.verify') }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        },
+                        body: JSON.stringify({
+                            password: result.value
+                        }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil!',
+                                text: 'Anda akan diarahkan ke halaman profile.',
+                            }).then(() => {
+                                window.location.href = '{{ route('main.profile') }}';
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Gagal',
+                                text: 'Password salah. Silakan coba lagi.',
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
                         Swal.fire({
                             icon: 'error',
-                            title: 'Gagal',
-                            text: 'Password salah. Silakan coba lagi.',
+                            title: 'Kesalahan',
+                            text: 'Terjadi kesalahan. Silakan coba lagi.',
                         });
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Kesalahan',
-                        text: 'Terjadi kesalahan. Silakan coba lagi.',
                     });
-                });
             }
         });
     });
@@ -239,10 +281,10 @@
 
 
 <script>
-    document.getElementById('manage-account').addEventListener('click', function (e) {
+    document.getElementById('manage-account').addEventListener('click', function(e) {
         e.preventDefault();
 
-   
+
         Swal.fire({
             title: 'Masukkan Password Anda',
             input: 'password',
@@ -263,41 +305,43 @@
             }
         }).then((result) => {
             if (result.isConfirmed) {
-                
-                fetch('{{ route("main.profile.verify") }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                    },
-                    body: JSON.stringify({ password: result.value }),
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'success') {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Berhasil!',
-                            text: 'Anda akan diarahkan ke halaman manage akun.',
-                        }).then(() => {
-                            window.location.href = '{{ route("main.akun-manager") }}';
-                        });
-                    } else {
+
+                fetch('{{ route('main.profile.verify') }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        },
+                        body: JSON.stringify({
+                            password: result.value
+                        }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil!',
+                                text: 'Anda akan diarahkan ke halaman manage akun.',
+                            }).then(() => {
+                                window.location.href = '{{ route('main.akun-manager') }}';
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Gagal',
+                                text: 'Password salah. Silakan coba lagi.',
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
                         Swal.fire({
                             icon: 'error',
-                            title: 'Gagal',
-                            text: 'Password salah. Silakan coba lagi.',
+                            title: 'Kesalahan',
+                            text: 'Terjadi kesalahan. Silakan coba lagi.',
                         });
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Kesalahan',
-                        text: 'Terjadi kesalahan. Silakan coba lagi.',
                     });
-                });
             }
         });
     });
