@@ -15,25 +15,25 @@
         rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Kalnia+Glaze:wght@100..700&family=Roboto&family=Roboto+Slab:wght@100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kalnia+Glaze:wght@100..700&family=Roboto&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Kalnia+Glaze:wght@100..700&family=Righteous&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kalnia+Glaze:wght@100..700&family=Righteous&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/sidebar-navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/newDesign.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
-<body style="background-color: #F9FAFC">
+<body style="background-color: #F9FAFC" >
 
     <div style="display: flex;">
 
-        <div style="width: 220px; height: 100vh;border-right: 2px solid #F4F4F6; background-color: white; ">
+        <div style="width: 220px;position: fixed;z-index: 10; height: 100vh;border-right: 2px solid #F4F4F6; background-color: white; ">
             <div
                 style="display: flex; width: 100%; height: 60px; border-bottom: 2px solid #F4F4F6; align-items: center">
                 {{-- Profile --}}
@@ -115,8 +115,8 @@
                             style="width: 90%; height: 35px; border-radius: 7px; display: flex; align-items: center; border: none; background-color: {{ request()->is('') ? '#1F2938' : 'white' }}; cursor: pointer;">
                             <img style="border-radius: 2px;padding: 1px;background-color: white;margin-left: 10px; width: 15px; height: 15px"
                                 src="{{ request()->is('') ? asset('images/user.png') : asset('images/user.png') }}">
-                            <p style="margin-left: 10px; font-size: 14px; font-weight: bold; color: {{ request()->is('') ? 'white' : '#1F2938' }}">User Box </p>
-                            <div style="width: 15px; height: 15px;background-color:aqua ;background-size: ;background-image: url({{ asset('images/down-arrow.png') }});"></div> 
+                            <p style="margin-left: 10px; font-size: 14px; font-weight: bold; color: {{ request()->is('') ? 'white' : '#1F2938' }}">User Box </p >
+                            <div style="width: 15px; height: 15px ;margin-left: 50px ;background-size: cover;background-image: url({{ asset('images/down-arrow.png') }});"></div> 
                         </button>
                     </a>
                 </div>
@@ -126,7 +126,7 @@
             {{--  --}}
         </div>
 
-        <div style="width: 100%; height: 60px; border-bottom: 2px solid #F4F4F6; background-color: #F9FAFC;display:flex;align-items:center">
+        <div style="margin-left: 17.2% ;width: 100%; height: 60px; border-bottom: 2px solid #F4F4F6;position: fixed; z-index: 5; background-color: #F9FAFC;display:flex;align-items:center">
             <div
                 style="margin-left: 20px;min-width: 140px; height: 30px; background-color: white; border: 1px solid #eaeaea; border-radius: 10px; display: flex; align-items: center">
                 <div
@@ -138,7 +138,7 @@
                 </div>
             </div>
             <div
-                style="margin-left: 42%;width: 240px; height: 30px; background-color: white;border: 1px solid #eaeaea; border-radius: 10px; display: flex; align-items: center">
+                style="margin-left: 35%;width: 250px; height: 30px; background-color: white;border: 1px solid #eaeaea; border-radius: 10px; display: flex; align-items: center">
                 <div
                     style="margin-left: 10px; width: 15px; height: 15px; background-image: url('{{ asset('images/calendar.png') }}'); background-position: center; background-size: cover;">
                 </div>
@@ -173,14 +173,14 @@
 
 
 
-    {{-- <div class="container">
+    <div class="container">
 
-        <div class="body">
+        <div class="nwd-bpart">
             <div class="main-body">
                 @yield('main-container')
             </div>
         </div>
-    </div> --}}
+    </div>
 </body>
 
 </html>

@@ -1,0 +1,251 @@
+.dash-info{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    gap: 1%;
+    justify-content: center;
+    align-items: center;
+}
+
+.poppins-regular {
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .poppins-medium {
+    font-family: "Poppins", serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  .poppins-medium {
+    font-family: "Wix Madefor Text", serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+ 
+
+#dash-fill{
+    border-radius: 15px;
+    width: 24%;
+    height: 130px;
+    background-color: white;
+    border: 2px solid #F4F4F6;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#toper{
+    display: flex;
+    width: 100%;
+    height: 90px;
+    align-items: center;
+    border-bottom: 2px solid #F4F4F6;
+}
+
+#imejes img{
+    width: 30px;
+    height: 30px;
+}
+
+#imejes{
+    width: 40px;
+    height: 40px;
+    background-color: #1F2938;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.historinfo{
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.isihistory{
+    width: 99%;
+    padding-bottom: 10px;
+    min-height: 150px;
+    border-radius: 15px;
+    background-color: white;
+    border: 2px solid #F4F4F6;
+}
+
+
+
+
+.settinger{
+    margin-left: 10px;
+}
+
+.stoker p{
+    font-weight: bolder;
+    font-size: 14px;
+}
+.stoker-inf p{
+    font-size: 11px;
+    color: #B4B5B9;
+}
+
+.comparer p{
+    margin-bottom: 10px;
+    font-size: 11px;
+    color: #B4B5B9;
+}
+
+
+
+#botter{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+
+.yesterday{
+    margin-bottom: 5px;
+    margin-left: 50px;
+    width: 40px;
+    height: 15px;
+    border-radius: 10px;
+    background-color: #C0F0E2;
+    display: flex;
+    align-items: center;
+}
+
+.yesterday p{
+    font-size: 10px;
+    font-weight: bold;
+    color: #519480;
+}
+/* #E4A9A8 */
+.gambar{
+    width: 10px;
+    height: 10px;
+    background-color: #519480;
+    margin-left: 4px;
+    margin-right: 3px;
+}
+
+.tulisan0danwagn{
+    width: 85%;
+
+}
+
+.histor{
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.date-tune{
+    width: 20%;
+
+}
+
+.tulisan-wngas p{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.tulisan0kaubta{
+    font-size: 13px;
+    color: #B4B5B9;
+}
+
+.penbenar{
+    padding-right: 20px;
+    margin-left: 20px;
+}
+
+.date-tune{
+    width: 120px;
+    display: flex;
+    align-items: center;
+
+}
+
+.time-button{
+    background-color: #E5EDFF;
+    border: none;
+    height: 30px;   
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.gbms{
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.rime{
+
+    color: #1F50AC;
+}
+
+.rime p{
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.table-class {
+    margin-top: 10px;
+    width: 100%;
+    background: white;
+}
+
+.secret-table{
+    border-collapse: collapse;
+    margin: 25px 0;
+
+    width: 100%;
+
+}
+
+.secret-table thead tr th{
+
+    font-size: 12px;
+    font-weight: bold;
+    color: #B4B5B9;
+    max-width: 100px;
+    text-align: left;
+    padding-left: 10px;
+
+}
+
+.secret-table thead tr{
+    height: 50px;
+
+}
+
+.secret-table thead{
+    border-bottom: 2px solid #F4F4F6;   
+}
+
+.secret-table tbody tr{
+    border-bottom: 2px solid #F4F4F6;   
+}
+
+.secret-table tbody tr td{
+    font-weight: bold;
+    font-size: 12px;
+
+    padding-left: 10px;
+}
+
+.secret-table tbody{
+
+}
+
+.secret-table tbody tr{
+    height: 50px;
+
+}

@@ -1,7 +1,9 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: "Wix Madefor Text", serif;
+    font-weight: 500;
+    font-style: normal;
     box-sizing: border-box;   
 }
 
@@ -56,13 +58,20 @@ body{
     display: flex;
 }
 
-.body {
+.nwd-bpart{
     width: 100%;
-    height: auto;
     min-height: 100vh;
-    background-color: #F9FAFC;
-
+    position: absolute;
+    
+    height: auto;
+    top: 0;
+    right: 0;
 }
+
+body > div:first-child {
+    z-index: 5; 
+}
+
 
 
 .main-body {
@@ -70,10 +79,10 @@ body{
     width: 76%;
     padding-bottom: 20px;
     min-height: 45vh;
-    background-color: white;
-    border-radius: 5px;
+    position: absolute;
+
     margin-left: 19%;
-    box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.1);
+
 }
 
 
